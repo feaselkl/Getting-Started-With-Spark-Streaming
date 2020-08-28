@@ -1,0 +1,5 @@
+Action	Description	Input Rows	Output Rows	
+reduce(func)	Execute for each row	N	1	
+fold(zero)(func)	Reduce but with a "zero value"	N	1	
+aggregate(zero)(seqOp,combOp)	Generate output of arbitrary type	N	1	
+collect()	Load the RDD onto one node	N	N	

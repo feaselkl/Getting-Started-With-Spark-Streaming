@@ -1,0 +1,5 @@
+Action	Description	Input Rows	Output Rows	
+count()	Return count of rows	N	1	
+take(n)	Return n elements. Often biased, no order guaranteed	N	n	
+top(n)	Get first n elements	N	n	
+foreach() / for()	Iterate through RDD	N	-	

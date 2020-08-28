@@ -1,0 +1,4 @@
+Transformation	Description	Input Rows	Output Rows	
+map(func)	Run a function for each row	1	1	
+flatMap(func)	Break a row into 0 or more rows	1	0+	
+filter(func)	Return if row fulfills predicate	1	0-1	
