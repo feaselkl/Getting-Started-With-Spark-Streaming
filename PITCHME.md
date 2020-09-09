@@ -2,10 +2,10 @@
 .reveal section img { background:none; border:none; box-shadow:none; }
 </style>
 
-## Getting Started with Apache Spark
+## Getting Started with Spark Streaming
 
 <a href="https://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)
-<a href="https://csmore.info/on/spark">https://CSmore.info/on/spark</a>
+<a href="https://csmore.info/on/sparkstreaming">https://CSmore.info/on/sparkstreaming</a>
 
 ---
 
@@ -43,123 +43,10 @@
 ## Agenda
 
 1. **The Origins of Spark**
-2. Installing Spark
-3. Functional Spark
-4. Our First Examples
-5. Spark SQL
-6. Databricks UAP
-7. .NET for Apache Spark
-
----?image=presentation/assets/background/elephant1.jpg&size=cover&opacity=20
-
-### The Origins of Hadoop
-
-Hadoop started as a pair of Google whitepapers: the Google File System (released in 2003) and MapReduce (2004). Doug Cutting, while working at Yahoo, applied these concepts to search engine processing.  The first public release of Hadoop was in early 2006.
-
-Since then, Hadoop has taken off as its own ecosystem, allowing companies to process petabytes of data efficiently over thousands of machines.
-
----?image=presentation/assets/background/elephant2.jpg&size=cover&opacity=20
-
-### Great Use Cases for Hadoop
-
-* Processing gigantic numbers of records, where a single-server solution is cost prohibitive or unavailable.
-* "Cold storage" of relational data, especially using Polybase.
-* Real-time ETL and streaming of data.
-* Statistical analysis of gigantic data sets.
-* A central data repository (data lake), which can feed other sources (like warehouses).
-
----?image=presentation/assets/background/ram.jpg&size=cover&opacity=20
-
-### The Birth of Hadoop:  2007-2011
-
-The hardware paradigm during the early years:
-
-* Many servers with direct attached storage.
-* Storage was primarily spinning disk.
-* Servers were held on-prem.
-* Servers were phyiscal machines.
-* There was some expectation of server failure.
-
-This hardware paradigm drove technical decisions around data storage, including the Hadoop Distributed Filesystem (HDFS).
-
----?image=presentation/assets/background/greenscreen.jpg&size=cover&opacity=20
-
-### The Birth of Hadoop:  2007-2011
-
-The software paradigm during the early years:
-
-* On Linux, C is popular but Java is more portable.
-* RAM is much faster than disk but is limited.
-* Network bandwidth is somewhat limited.
-* Data structure is context-sensitive and the same file may have several structures.
-* Developers know the data context when they write their code.
-
-This led to node types, semi-structured data storage, and MapReduce.
-
----?image=presentation/assets/background/elephant3.jpg&size=cover&opacity=20
-
-### Node Types in Hadoop
-
-There are two primary node types in Hadoop: the NameNode and data nodes.
-
-The **NameNode** (aka control or head node) is responsible for communication with the outside world, coordination with data nodes, and ensuring that jobs run.
-
-**Data nodes** store data and execute code, making results available to the NameNode.
-
----?image=presentation/assets/background/data.jpg&size=cover&opacity=20
-
-### Data Retrieval in Hadoop
-
-Hadoop follows a "semi-structured" data model: you define the data structure not when adding files to HDFS, but rather upon retrieval. You can still do ETL and data integrity checks before moving data to HDFS, but it is not mandatory.
-
-In contrast, a relational database has a structured data model:  queries can make good assumptions about data integrity and structure.
-
----
-
-### Data Retrieval in Hadoop
-
-Semi-structured data helps when:
-
-* Different lines have different sets of values.
-* Even if the lines are the same, different applications need the data aligned different ways.
-
-![A mocked-up example of a log file](presentation/assets/image/SampleErrorLog.png)
-
----?image=presentation/assets/background/map.jpg&size=cover&opacity=20
-
-### MapReduce
-
-MapReduce is built around two FP constructs:
-
-* **Map**: filter and sort data
-* **Reduce**: aggregate data
-
-MapReduce combines map and reduce calls to transform data into desired outputs.
-
-The nodes which perform mapping may not be the same nodes which perform reduction, allowing for large-scale performance improvement.
-
----?image=presentation/assets/background/elephant4.jpg&size=cover&opacity=20
-
-### What Went Right?
-
-* Able to process files too large for a single server
-* Solved important problems for enormous companies
-* Hadoop built up an amazing ecosystem
-  - Databases:  HBase, Phoenix, Hive, Impala
-  - Data movers:  Pig, Flume, Sqoop
-  - Streaming:  Storm, Kafka, Spark, Flink
-
----?image=presentation/assets/background/elephant5.jpg&size=cover&opacity=20
-
-### What Went Wrong?
-
-* MapReduce can be SLOW – many reads and writes against slow spinning disk.
-* Hardware changes over time stretched and sometimes broke Hadoop assumptions:
-  - Spinning disk DAS >> SSD & SANs >> NVMe
-  - **Much** more RAM on a single box (e.g., 2TB)
-  - Physical hardware >> On-prem VM >> Cloud
-
-Some of these changes precipitated the research project which became Apache Spark.
+2. What is Spark Streaming?
+3. Our First Streaming Example
+4. A Full Program
+5. .NET and Spark Streaming
 
 ---?image=presentation/assets/background/sparkler.jpg&size=cover&opacity=20
 
@@ -213,17 +100,17 @@ Add all of this together and you have the key component behind Spark.
 
 ---
 
-@title[Installing Spark]
+@title[What is Spark Streaming?]
 
 ## Agenda
 
 1. The Origins of Spark
-2. **Installing Spark**
-3. Functional Spark
-4. Our First Examples
-5. Spark SQL
-6. Databricks UAP
-7. .NET for Apache Spark
+2. **What is Spark Streaming?**
+3. Our First Streaming Example
+4. A Full Program
+5. .NET and Spark Streaming
+
+TODO:  Section 2.
 
 ---?image=presentation/assets/background/construction.jpg&size=cover&opacity=20
 
@@ -321,102 +208,89 @@ The <a href="https://hortonworks.com/products/sandbox/">Hortonworks Data Platfor
 
 ---
 
-@title[Functional Spark]
+@title[Our First Streaming Example]
 
 ## Agenda
 
 1. The Origins of Spark
-2. Installing Spark
-3. **Functional Spark**
-4. Our First Examples
-5. Spark SQL
-6. Databricks UAP
-7. .NET for Apache Spark
+2. What is Spark Streaming?
+3. **Our First Streaming Example**
+4. A Full Program
+5. .NET and Spark Streaming
 
 ---?image=presentation/assets/background/colored-pencils.jpg&size=cover&opacity=20
 
-### Why Scala?
+### Hello World:  DStream
 
-Spark supports Scala, Python, and Java as primary languages and R and SQL as secondaries.  We will use Scala because:
+```scala
+val ssc = new StreamingContext("local[*]", "HelloSparkStreaming", Seconds(1))
+val lines = ssc.socketTextStream("127.0.0.1", 9999, StorageLevel.MEMORY_ONLY)
+val wordCounts = lines.flatMap(line => line.split(' '))
+	.map(word => word.toLowerCase())
+	.countByValueAndWindow(Seconds(30), Seconds(5))
+wordCounts
+	.transform(rdd => rdd.sortBy(_._2, false))
+	.print(10)
+```
 
-1. Spark is written in Scala.
-2. Functionality comes out in the Scala API first.
-3. Scala is terser than Java but still readable.
-4. Scala is typically faster than Python.
-5. Scala is a functional programming language, which fits the data platform mindset better.
+@[1](Create a context with a 1-second batch size.)
+@[2](Open a socket stream to port 9999.)
+@[3-5](Count of appearances of a word over a 30-second window, sliding every 5.)
+@[6-8](Print the 10 most common words.)
 
-If you prefer Python or Java, that’s fine. 
 
 ---?image=presentation/assets/background/arrow.jpg&size=cover&opacity=20
 
-### Functional Programming In Brief
+### Hello World:  DataFrame
 
-Relevant functional programming concepts:
-
-```r
-def parseLine(line:String) { line.toString().split(",")(3); }
-val rdd = lines.map(parseLine)
-val rdd = lines.map(x => x.toString().split(",")(3))
+```scala
+val spark:SparkSession = SparkSession.builder()
+	.master("local[3]")
+	.appName("HelloSparkStreaming_DataFrame")
+	.getOrCreate()
+val df = spark.readStream
+	.format("socket")
+	.option("host","127.0.0.1")
+	.option("port","9999")
+	.load()
+val count = df
+	.select(explode(split(df("value")," "))
+	.alias("word"))
+	.groupBy("word")
+	.count()
+val query = count.writeStream
+	.format("console")
+	.outputMode("complete")
+	.start()
+	.awaitTermination()
 ```
 
-@[1](Functions are the key control structure.)
-@[2](Functions can accept functions as parameters.)
-@[3](We can define inline, anonymous functions called lambda expressions.)
-@[1-3](We can build bottom-up solutions iteratively, rather than needing to know everything up front.)
+@[1-4](Open a new Spark session.)
+@[5-9](Open a socket stream to port 9999.)
+@[10-14](Count of appearances of a word over the default frame.)
+@[15-19](Write outputs to console until stopped.)
 
----?image=presentation/assets/background/koala.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/demo.jpg&size=cover&opacity=20
 
-### Transformations
-
-Transformations take inputs and return an RDD or DataSet.  Transformations are lazily evaluated, making Spark processing more efficient.
-
-@table[table-header table-tsv text-07](presentation/assets/tsv/transformations.txt)
-
----?image=presentation/assets/background/cat-yawning.jpg&size=cover&opacity=20
-
-### Set Transformations
-
-* `rdd1.distinct()`
-* `rdd1.union(rdd2)`
-* `rdd1.intersection(rdd2)`
-* `rdd1.subtract(rdd2)` – Akin to the `EXCEPT` operator in SQL
-* `rdd1.cartesian(rdd2)` – Cartesian product (`CROSS JOIN` in SQL)
-
-Warning:  set operations can be slow in Spark depending on data sizes and whether data needs to be shuffled across nodes.
-
----?image=presentation/assets/background/jump.jpg&size=cover&opacity=20
-
-### Actions
-
-Actions take RDDs as inputs and return something other than an RDD or DataSet.  Actions cause Spark to evaluate all transformations and return.
-
-@table[table-header table-tsv text-07](presentation/assets/tsv/actions.txt)
-
----?image=presentation/assets/background/utv.jpg&size=cover&opacity=20
-
-### More Actions
-
-Actions take RDDs as inputs and return something other than an RDD or DataSet.  Actions cause Spark to evaluate all transformations and return.
-
-@table[table-header table-tsv text-07](presentation/assets/tsv/moreactions.txt)
+### Demo Time
 
 ---
 
-@title[Our First Examples]
+@title[A Full Program]
 
 ## Agenda
 
 1. The Origins of Spark
-2. Installing Spark
-3. Functional Spark
-4. **Our First Examples**
-5. Spark SQL
-6. Databricks UAP
-7. .NET for Apache Spark
+2. What is Spark Streaming?
+3. Our First Streaming Example
+4. **A Full Program**
+5. .NET and Spark Streaming
+
+TODO:  lead-in, images
 
 ---?image=presentation/assets/background/restaurant.jpg&size=cover&opacity=20
 
-### Where To Eat?
+### Cars:  a Story in Three Services
 
 We will analyze food service inspection data for the city of Durham.  We want to answer a number of questions about this data, including average scores and splits between classic restaurants and food trucks.
 
@@ -426,154 +300,55 @@ We will analyze food service inspection data for the city of Durham.  We want to
 
 ---
 
-@title[Spark SQL]
+@title[.NET and Spark Streaming]
 
 ## Agenda
 
 1. The Origins of Spark
-2. Installing Spark
-3. Functional Spark
-4. Our First Examples
-5. **Spark SQL**
-6. Databricks UAP
-7. .NET for Apache Spark
+2. What is Spark Streaming?
+3. Our First Streaming Example
+4. A Full Program
+5. **.NET and Spark Streaming**
 
 ---?image=presentation/assets/background/frame.jpg&size=cover&opacity=20
 
-### The Evolution of Spark
+### Capabilities
 
-One of the first additions to Spark was SQL support, first with Shark and then with Spark SQL.
+Microsoft.Spark allows us to execute code in .NET DLLs or executables against Spark clusters.  Key functioanlity:
 
-With Apache Spark 2.0, Spark SQL can take advantage of Datasets (strongly typed RDDs) and DataFrames (Datasets with named columns).
-
-Spark SQL functions are accessible within the SparkSession object, created by default as “spark” in the Spark shell.
+* Both C# and F# are supported.
+* Use the DataFrames API for Spark Structured Streaming.
+* Import additional libraries using Maven.
+* Debugging is possible from within Visual Studio and Visual Studio Code.
 
 ---?image=presentation/assets/background/chain.jpg&size=cover&opacity=20
 
-### The Functional Approach
+### Limitations
 
-**Functions** provide us with SQL-like operators which we can chain together in Scala, similar to how we can use LINQ with C#.  These functions include (but are not limited to) `select()`, `distinct()`, `where()`, `join()`, and `groupBy()`.
-
-There are also functions you might see in SQL Server like `concat()`, `concat_ws()`, `min()`, `max()`, `row_number()`, `rank()`, and `dense_rank()`.
+* No support for DStreams.
+* Support for Spark versions tends to lag.
+* Error handling can be a pain.
 
 ---?image=presentation/assets/background/magnifying-glass.jpg&size=cover&opacity=20
 
-### Queries
+### Approach
 
-**Queries** are exactly as they sound:  we can write SQL queries.  Spark SQL strives to be ANSI compliant with additional functionality like sampling and user-defined aggregate functions.
-
-Spark SQL tends to lag a bit behind Hive, which lags a bit behind the major relational players in terms of ANSI compliance.  That said, Spark SQL has improved greatly since version 1.0.
-
----?image=presentation/assets/background/movie.jpg&size=cover&opacity=20
-
-### Querying The MovieLens Data
-
-GroupLens Research has made available their MovieLens data set which includes 20 million ratings of 27K movies.
-
-We will use Apache Spark with Spark SQL to analyze this data set, letting us look at frequently rated movies, the highest (and lowest) rated movies, and common movie genres.
+* Build .NET code in Visual Studio / VS Code.
+* Build a Docker container with .NET Core + Java and install Spark.
+* Run the `spark-submit` command, sending all necessary parameters.
 
 ---?image=presentation/assets/background/demo.jpg&size=cover&opacity=20
 
 ### Demo Time
 
 ---
-
-@title[Databricks UAP]
-
-## Agenda
-
-1. The Origins of Spark
-2. Installing Spark
-3. Functional Spark
-4. Our First Examples
-5. Spark SQL
-6. **Databricks UAP**
-7. .NET for Apache Spark
-
----
-
-### Databricks UAP
-
-@div[left-50]
-Databricks, the commercial enterprise behind Apache Spark, makes available the Databricks Unified Analytics Platform in <a href="https://databricks.com/aws">AWS</a> and <a href="https://databricks.com/product/azure">Azure</a>.  They also have a <a href="https://community.cloud.databricks.com/">Community Edition</a>, available for free.
-
-@divend
-
-@div[right-50]
-![The Databricks Community Edition front page.](presentation/assets/image/DatabricksCommunityEdition.png)
-@divend 
-
----
-
-### Databricks UAP
-
-@div[left-50]
-Clusters are 1 node & 6 GB RAM running on spot instances of AWS.<br />
-
-Data sticks around after a cluster goes away, and limited data storage is free.<br />
-@divend
-
-@div[right-50]
-![The Databricks Data tab.](presentation/assets/image/DatabricksData.png)
-@divend 
-
----
-
-### Databricks UAP
-
-Create a Zeppelin notebook and attach it to a running cluster. Notebooks stick around after the cluster goes away.
-
-![Running an Apache Zeppelin notebook in Databricks Community Edition.](presentation/assets/image/DatabricksZeppelin.png)
-
----
-
-### Databricks UAP
-
-Zeppelin comes with a good set of built-in, interactive plotting options.
-
-![An example of a column chart in Databricks.](presentation/assets/image/DatabricksZeppelinPlot.png)
-
----
-
-### Databricks UAP
-
-Your cluster terminates after 2 hours of inactivity. You can also terminate the cluster early.
-
-![Be sure to shut down those inactive Databricks clusers to save money.](presentation/assets/image/DatabricksTerminate.png)
-
----
-
-@title[.NET for Apache Spark]
-
-## Agenda
-
-1. The Origins of Spark
-2. Installing Spark
-3. Functional Spark
-4. Our First Examples
-5. Spark SQL
-6. Databricks UAP
-7. **.NET for Apache Spark**
-
----
-
-### dotnet-spark
-
-Microsoft has official support for Spark running on .NET.  They support the C# and F# languages.
-
-With .NET code, you are limited to DataFrames and Spark SQL, so no direct access to RDDs.
-
----?image=presentation/assets/background/demo.jpg&size=cover&opacity=20
-
-### Demo Time
-
----?image=presentation/assets/background/excavator.jpg&size=cover&opacity=20
 
 @title[What's Next]
 
+TODO:
 ### What's Next
 
-We've only scratched the surface of Apache Spark.  From here, check out:
+We've only scratched the surface of Spark Streaming.  From here, check out:
 
 * MLLib, a library for machine learning algorithms built into Spark
 * SparkR and sparklyr, two R libraries designed for distributed computing
@@ -584,6 +359,6 @@ We've only scratched the surface of Apache Spark.  From here, check out:
 
 ### Wrapping Up
 
-To learn more, go here:  <a href="https://csmore.info/on/spark">https://CSmore.info/on/spark</a>
+To learn more, go here:  <a href="https://csmore.info/on/sparkstreaming">https://CSmore.info/on/sparkstreaming</a>
 
 And for help, contact me:  <a href="mailto:feasel@catallaxyservices.com">feasel@catallaxyservices.com</a> | <a href="https://www.twitter.com/feaselkl">@feaselkl</a>
