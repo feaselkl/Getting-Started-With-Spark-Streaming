@@ -120,8 +120,6 @@ Conceptually, Spark Streaming allows us to work with Resilient Distributed Datas
 
 ---
 
-Given a trigger, such as a time interval, retrieve the stream of data and act on it.
-
 ![An example programming model for structured streaming in Apache Spark.](presentation/assets/image/gsasg-spark-streaming-model.png)
 
 ([Image Source](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming))
