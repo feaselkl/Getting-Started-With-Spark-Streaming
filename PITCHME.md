@@ -112,8 +112,6 @@ Add all of this together and you have the key component behind Spark.
 
 ---
 
-### Spark Streaming:  Near-Real-Time Data
-
 Conceptually, Spark Streaming allows us to work with Resilient Distributed Datasets over time.
 
 ![Read pieces of the data stream and process them separately.](presentation/assets/image/gsasg-spark-streaming-workflow.png)
@@ -121,8 +119,6 @@ Conceptually, Spark Streaming allows us to work with Resilient Distributed Datas
 ([Image Source](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming))
 
 ---
-
-### Spark Streaming:  Programming Model
 
 Given a trigger, such as a time interval, retrieve the stream of data and act on it.
 
@@ -173,7 +169,7 @@ Spark Streaming has two key types of windows:  tumbling and sliding.  Suppose we
 
 In a **tumbling window**, we have non-overlapping intervals of events captured during a certain time frame.
 
-![A stream of events over time, grouped by tumbling windows.](presentation/assets/image/Events1.png)
+![A stream of events over time, grouped by tumbling windows.](presentation/assets/image/Events1.gif)
 
 ---
 
@@ -181,7 +177,7 @@ In a **tumbling window**, we have non-overlapping intervals of events captured d
 
 In a **sliding window**, we have potentially-overlapping intervals.  We have a window length (in units of time) and a sliding window interval (in units of time).
 
-![A stream of events over time, grouped by sliding windows.](presentation/assets/image/Events2.png)
+![A stream of events over time, grouped by sliding windows.](presentation/assets/image/Events2.gif)
 
 ---
 
