@@ -153,7 +153,7 @@ Datasets and DataFrames provide several advantages over RDDs:
 * The ability to structure data in code
 * (Sometimes) better performance
 
----
+---?image=presentation/assets/background/graywall.jpg&size=cover&opacity=60
 
 ### A Brief Primer on Windows
 
@@ -161,7 +161,7 @@ Spark Streaming has two key types of windows:  tumbling and sliding.  Suppose we
 
 ![A stream of events over time.](presentation/assets/image/Events0.png)
 
----
+---?image=presentation/assets/background/graywall.jpg&size=cover&opacity=60
 
 ### Tumbling Windows
 
@@ -169,7 +169,7 @@ In a **tumbling window**, we have non-overlapping intervals of events captured d
 
 ![A stream of events over time, grouped by tumbling windows.](presentation/assets/image/Events1.gif)
 
----
+---?image=presentation/assets/background/graywall.jpg&size=cover&opacity=60
 
 ### Sliding Windows
 
