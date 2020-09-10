@@ -110,7 +110,7 @@ Add all of this together and you have the key component behind Spark.
 4. A Full Program
 5. .NET and Spark Streaming
 
----
+---?image=presentation/assets/background/calendar.jpg&size=cover&opacity=20
 
 Conceptually, Spark Streaming allows us to work with Resilient Distributed Datasets over time.
 
@@ -124,7 +124,7 @@ Conceptually, Spark Streaming allows us to work with Resilient Distributed Datas
 
 ([Image Source](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming))
 
----
+---?image=presentation/assets/background/cleaning.jpg&size=cover&opacity=20
 
 ### DStreams and Microbatches
 
@@ -142,7 +142,7 @@ Datasets are strongly-typed RDDs.
 
 DataFrames are Datasets with named columns (`Dataset[Row]` in Scala).  DataFrames are untyped in Python and R, and in all languages slice data into named columns.
 
----
+---?image=presentation/assets/background/bison-fighting.jpg&size=cover&opacity=20
 
 ### DataFrames
 
@@ -189,7 +189,7 @@ In a **sliding window**, we have potentially-overlapping intervals.  We have a w
 4. A Full Program
 5. .NET and Spark Streaming
 
----?image=presentation/assets/background/colored-pencils.jpg&size=cover&opacity=20
+---
 
 ### Hello World:  DStream
 
@@ -209,9 +209,7 @@ wordCounts
 @[3-5](Count of appearances of a word over a 30-second window, sliding every 5.)
 @[6-8](Print the 10 most common words.)
 
----?image=presentation/assets/background/arrow.jpg&size=cover&opacity=20
-
-### Hello World:  DataFrame
+---
 
 ```scala
 val spark:SparkSession = SparkSession.builder()
@@ -256,7 +254,7 @@ val query = count.writeStream
 4. **A Full Program**
 5. .NET and Spark Streaming
 
----?image=presentation/assets/background/restaurant.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/cobra.jpg&size=cover&opacity=20
 
 ### Cars:  a Story in Three Services
 
@@ -280,7 +278,7 @@ Our company has automobile data stored in an Apache Kafka topic.  We'd like to m
 4. A Full Program
 5. **.NET and Spark Streaming**
 
----?image=presentation/assets/background/frame.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/magnifying-glass.jpg&size=cover&opacity=20
 
 ### Capabilities
 
@@ -291,7 +289,7 @@ Microsoft.Spark allows us to execute code in .NET DLLs or executables against Sp
 * Import additional libraries using Maven.
 * Debugging is possible from within Visual Studio and Visual Studio Code.
 
----?image=presentation/assets/background/chain.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/robot.jpg&size=cover&opacity=20
 
 ### Limitations
 
@@ -299,7 +297,7 @@ Microsoft.Spark allows us to execute code in .NET DLLs or executables against Sp
 * Support for Spark versions tends to lag.
 * Error handling can be a pain.
 
----?image=presentation/assets/background/magnifying-glass.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/stack.jpg&size=cover&opacity=20
 
 ### Approach
 
