@@ -110,101 +110,78 @@ Add all of this together and you have the key component behind Spark.
 4. A Full Program
 5. .NET and Spark Streaming
 
-TODO:  Section 2.
+---
 
----?image=presentation/assets/background/construction.jpg&size=cover&opacity=20
+### Spark Streaming:  Near-Real-Time Data
 
-### Installation Options
+Conceptually, Spark Streaming allows us to work with Resilient Distributed Datasets over time.
 
-We have several options available to install Spark:
+![Read pieces of the data stream and process them separately.](presentation/assets/image/gsasg-spark-streaming-workflow.png)
 
-* Install stand-alone (Linux, Windows, or Mac)
-* Use with a Hadoop distribution like Cloudera or Hortonworks
-* Use Databricks Unified Analytics Platform on AWS or Azure
-* Use with a Hadoop PaaS solution like Amazon ElasticMapReduce or Azure HDInsight
-
-We will look at the first three in this talk.
+([Image Source](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming))
 
 ---
 
-### Install Spark On Windows
+### Spark Streaming:  Programming Model
 
-Step 1:  Install the <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit</a>.  I recommend getting Java Version 8.  Spark is currently not compatible with JDKs after 8.
+Given a trigger, such as a time interval, retrieve the stream of data and act on it.
 
-![Be sure to install JDK 8](presentation/assets/image/JavaSE.png)
+![An example programming model for structured streaming in Apache Spark.](presentation/assets/image/gsasg-spark-streaming-model.png)
 
----
-
-### Install Spark On Windows
-
-Step 2:  Go to <a href="http://spark.apache.org/downloads.html">the Spark website</a> and download a pre-built Spark binary.
-
-
-![Instructions to download Apache Spark pre-built for Hadoop.](presentation/assets/image/DownloadSpark.png)
-
-You can unzip this .tgz file using a tool like 7-Zip.
+([Image Source](https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming))
 
 ---
 
-### Install Spark On Windows
+### DStreams and Microbatches
 
-Step 3:  <a href="https://github.com/steveloughran/winutils/blob/master/hadoop-2.8.3/bin/winutils.exe">Download WinUtils</a>.  This is the 64-bit version and should be 110KB.  There is a 32-bit version which is approximately 43KB; it will **not** work with 64-bit Windows!  Put it somewhere like C:\spark\bin\.
+DStreams are simply time-aware RDDs.  Instead of using backward-looking historical data, we use forward-looking near-present data.
 
-![The winutils readme.](presentation/assets/image/winutils.png)
+To maximize performance, Spark tends to wait a certain amount of time and build a microbatch--this reduces the cost of processing overhead by packing more than one record into a DStream.
 
----
+---?image=presentation/assets/background/frame.jpg&size=cover&opacity=20
 
-### Install Spark On Windows
+### DataFrames
 
-Step 4: Create c:\tmp\hive and open up permissions to everybody. 
+With Apache Spark 2.0, the model shifted from Resilient Distributed Datasets to Datasets and DataFrames.
 
+Datasets are strongly-typed RDDs.
 
-![Grant rights to everybody on the /tmp/hive directory.](presentation/assets/image/GrantHiveRights.png)
-
----
-
-### Install Spark On Windows
-
-Step 5:  Create environment variables:
-
-@div[left-50]
-**SPARK_HOME** >> `C:\spark`<br />
-**HADOOP_HOME** >> (where winutils is)<br />
-**JAVA_HOME** >> (where you installed Java)<br />
-**PATH** >> `;%SPARK_HOME%\bin; %JAVA_HOME%\bin;`
-@divend
-
-@div[right-50]
-![Set environment variables.](presentation/assets/image/EnvironmentVariables.png)
-@divend 
+DataFrames are Datasets with named columns (`Dataset[Row]` in Scala).  DataFrames are untyped in Python and R, and in all languages slice data into named columns.
 
 ---
 
-### Install Spark On Windows
+### DataFrames
 
-Step 6: Open the `conf` folder and create & modify `log4j.properties`.
+Datasets and DataFrames provide several advantages over RDDs:
 
-![The conf folder, containing log4j.properties](presentation/assets/image/ConfFolder.png)
-
-![Change INFO to ERROR in log4j.properties](presentation/assets/image/log4j.png)
-
----
-
-### Install Spark On Windows
-
-Step 7:  In the bin folder, run `spark-shell.cmd`.  Type `Ctrl-D` to exit the shell.
-
-
-![A view of the Spark shell.](presentation/assets/image/SparkShell.png)
+* Native SQL support
+* Compile-time errors
+* The ability to structure data in code
+* (Sometimes) better performance
 
 ---
 
-### Use A Hadoop Distribution
+### A Brief Primer on Windows
 
-The <a href="https://hortonworks.com/products/sandbox/">Hortonworks Data Platform sandbox</a> and <a href="https://www.cloudera.com/downloads/quickstart_vms/5-13.html">Cloudera QuickStart VM</a> both include Apache Spark and Apache Spark 2.
+Spark Streaming has two key types of windows:  tumbling and sliding.  Suppose we have events which happen over time:
 
+![A stream of events over time.](presentation/assets/image/Events0.png)
 
-![A view of Spark running off of a Hortonworks installation.](presentation/assets/image/HadoopDistribution.png)
+---
+
+### Tumbling Windows
+
+In a **tumbling window**, we have non-overlapping intervals of events captured during a certain time frame.
+
+![A stream of events over time, grouped by tumbling windows.](presentation/assets/image/Events1.png)
+
+---
+
+### Sliding Windows
+
+In a **sliding window**, we have potentially-overlapping intervals.  We have a window length (in units of time) and a sliding window interval (in units of time).
+
+![A stream of events over time, grouped by sliding windows.](presentation/assets/image/Events2.png)
 
 ---
 
@@ -237,7 +214,6 @@ wordCounts
 @[2](Open a socket stream to port 9999.)
 @[3-5](Count of appearances of a word over a 30-second window, sliding every 5.)
 @[6-8](Print the 10 most common words.)
-
 
 ---?image=presentation/assets/background/arrow.jpg&size=cover&opacity=20
 
@@ -286,13 +262,13 @@ val query = count.writeStream
 4. **A Full Program**
 5. .NET and Spark Streaming
 
-TODO:  lead-in, images
-
 ---?image=presentation/assets/background/restaurant.jpg&size=cover&opacity=20
 
 ### Cars:  a Story in Three Services
 
-We will analyze food service inspection data for the city of Durham.  We want to answer a number of questions about this data, including average scores and splits between classic restaurants and food trucks.
+Our company has automobile data stored in an Apache Kafka topic.  We'd like to migrate that data over to a Cassandra database for analysis.  With Spark Streaming, we can do this easily.
+
+![The process flow:  Kafka to Cassandra via Spark Streaming.](presentation/assets/image/CarsDemo.png)
 
 ---?image=presentation/assets/background/demo.jpg&size=cover&opacity=20
 
@@ -314,7 +290,7 @@ We will analyze food service inspection data for the city of Durham.  We want to
 
 ### Capabilities
 
-Microsoft.Spark allows us to execute code in .NET DLLs or executables against Spark clusters.  Key functioanlity:
+Microsoft.Spark allows us to execute code in .NET DLLs or executables against Spark clusters.  Key functionality:
 
 * Both C# and F# are supported.
 * Use the DataFrames API for Spark Structured Streaming.
@@ -345,15 +321,13 @@ Microsoft.Spark allows us to execute code in .NET DLLs or executables against Sp
 
 @title[What's Next]
 
-TODO:
 ### What's Next
 
-We've only scratched the surface of Spark Streaming.  From here, check out:
+We've only scratched the surface of Spark Streaming.  Additional topics of interest include:
 
-* MLLib, a library for machine learning algorithms built into Spark
-* SparkR and sparklyr, two R libraries designed for distributed computing
-* GraphX, a distributed graph database 
-* Spark Streaming, allowing “real-time” data processing
+* Watermarking and late-arriving data
+* Checkpoints and recovery from failure
+* Window functions in Spark SQL
 
 ---
 

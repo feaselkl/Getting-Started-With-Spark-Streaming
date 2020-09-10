@@ -5,42 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5a6b3b4-cada-4907-8b56-1bbd4c9ce98a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/cars.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/project/target/config-classes/$b93ee25cd0d3446747c1.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/helloworld/HelloSparkStreaming.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/helloworld/HelloSparkStreamingDataFrame.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/ksc/Spark/Job.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/ksc/model/Car.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/ksc/services/CarCassandraForeachWriter.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/ksc/services/CassandraService.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/ksc/services/KafkaService.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/catallaxyservices/sparkstreaming/wordcount.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Getting-Started-With-Spark-Streaming.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Getting-Started-With-Spark-Streaming.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$41bb1611c4bbb7fb00e4.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$44d17e4b26b8428062a1.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$6ed03ff1e3c2872414ac.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.history" beforeDir="false" afterPath="$PROJECT_DIR$/target/.history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/update/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/update/update_cache_2.12/inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.12/update/update_cache_2.12/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/inputFileStamps/previous" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/checkBuildSources/_global/inputFileStamps/previous" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/update/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.12/inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.12/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/assets/image/CarsDemo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/ConfFolder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksCommunityEdition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksData.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksTerminate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksZeppelin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksZeppelinPlot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DownloadSpark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/EnvironmentVariables.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/GrantHiveRights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/HadoopDistribution.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/JavaSE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/SampleErrorLog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/SparkShell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/log4j.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/assets/image/winutils.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
