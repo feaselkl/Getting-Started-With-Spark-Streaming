@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5a6b3b4-cada-4907-8b56-1bbd4c9ce98a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/presentation/assets/image/CarsDemo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/ConfFolder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksCommunityEdition.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksData.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksTerminate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksZeppelin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DatabricksZeppelinPlot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/DownloadSpark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/EnvironmentVariables.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/GrantHiveRights.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/HadoopDistribution.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/JavaSE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/SampleErrorLog.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/SparkShell.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/log4j.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/assets/image/winutils.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
