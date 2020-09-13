@@ -59,6 +59,11 @@ This demo is easiest to run in IntelliJ IDEA, although you can certainly run it 
     WITH REPLICATION = {
         'class' : 'SimpleStrategy', 'replication_factor' : 1 }
     };
+    ```
+
+    **After** running this script to create the keyspace, run the following script to create the table.
+
+    ```cassandra
     CREATE TABLE public.car("Name" text primary key, "Cylinders" int, "Horsepower" int )
     ```
 

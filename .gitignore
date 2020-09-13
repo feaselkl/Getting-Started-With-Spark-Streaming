@@ -42,3 +42,8 @@ target/streams/runtime/externalDependencyClasspath/_global/streams/export
 target/streams/runtime/managedClasspath/_global/streams/export
 target/streams/test/externalDependencyClasspath/_global/streams/export
 target/streams/test/managedClasspath/_global/streams/export
+.cassandraWorkbench.jsonc
+.cassandraWorkbench/editors/0.json
+.cassandraWorkbench/history.json
+gswss.code-workspace
+.idea/workspace.xml

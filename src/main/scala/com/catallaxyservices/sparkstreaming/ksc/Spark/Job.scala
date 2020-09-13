@@ -45,6 +45,8 @@ object Main extends {
       .appName("Integrating Cassandra")
       .master("local[2]")
       .config("spark.cassandra.connection.host", "localhost")
+      .config("spark.cassandra.connection.native.port", 9042)
+      .config("spark.cassandra.connection.rpc.port", 9160)
       .getOrCreate()
 
     //Instantiating RunJob then Reading and writing streams.

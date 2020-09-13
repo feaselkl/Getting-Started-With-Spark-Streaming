@@ -1,0 +1,1 @@
+{"body":"SELECT COUNT(*) FROM public.Car;","clusterName":"Cluster AllowAllAuthenticator","filename":"script_1.cql","id":"znH6j1GQCq4VD03P","keyspace":"system","modified":true,"source":"action"}
