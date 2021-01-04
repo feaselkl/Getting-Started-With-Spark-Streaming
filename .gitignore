@@ -47,3 +47,8 @@ target/streams/test/managedClasspath/_global/streams/export
 .cassandraWorkbench/history.json
 gswss.code-workspace
 .idea/workspace.xml
+dotnet/SparkStreamingDotNetExample/.vs/SparkStreamingDotNetExample/DesignTimeBuild/.dtbcache.v2
+dotnet/SparkStreamingDotNetExample/SparkStreamingDotNetExample/obj/project.nuget.cache
+dotnet/SparkStreamingDotNetExample/SparkStreamingDotNetExample/obj/Release/netcoreapp3.1/SparkStreamingDotNetExample.AssemblyInfo.fs
+dotnet/SparkStreamingDotNetExample/SparkStreamingDotNetExample/obj/Release/netcoreapp3.1/SparkStreamingDotNetExample.AssemblyInfoInputs.cache
+dotnet/SparkStreamingDotNetExample/SparkStreamingDotNetExample/obj/Release/netcoreapp3.1/SparkStreamingDotNetExample.fsprojAssemblyReference.cache

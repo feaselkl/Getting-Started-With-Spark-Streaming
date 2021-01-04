@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Catallaxy Services | Getting Started with Spark Streaming</title>
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="../WebsiteAssets/mods.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h2>Getting Started with Spark Streaming</h2>
+					
+					<a href="https://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)<br />
+					<a href="https://csmore.info/on/sparkstreaming">https://csmore.info/on/sparkstreaming</a>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Who Am I?  What Am I Doing Here?</h3>
+					<div class="container">
+						<div class="col">
+							<table class="whoami">
+								<tr>
+									<td><a href="https://csmore.info"><img src="../WebsiteAssets/Logo.png" height="100" /></a></td>
+									<td nowrap><a href="https://csmore.info">Catallaxy Services</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://curatedsql.com"><img src="../WebsiteAssets/CuratedSQLLogo.png" height="100" /></a></td>
+									<td nowrap><a href="https://curatedsql.com">Curated SQL</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://www.apress.com/us/book/9781484254608"><img src="../WebsiteAssets/PolyBaseRevealed.png" height="120" /></a></td>
+									<td nowrap><a href="https://www.apress.com/us/book/9781484254608">PolyBase Revealed</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col">
+							<a href="http://www.twitter.com/feaselkl"><img src="../WebsiteAssets/HeadShot.jpg" height="358" width="315" /></a>
+							<br />
+							<a href="http://www.twitter.com/feaselkl">@feaselkl</a>
+						</div>					
+					</div>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li class="active">The Origins of Spark</li>
+						<li>What is Spark Streaming?</li>
+						<li>Our First Streaming Example</li>
+						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/sparkler.jpg" data-background-opacity="0.2">
+					<h3>The Genesis of Spark</h3>
+
+					<p>Spark started as a research project at the University of California Berkeley’s Algorithms, Machines, People Lab (AMPLab) in 2009.  The project's goal was to develop in-memory cluster computing, avoiding MapReduce's reliance on heavy I/O use.</p>
+
+					<p>The first open source release of Spark was 2010, concurrent with a paper from Matei Zaharia, et al.</p>
+
+					<p>In 2012, Zaharia, et al release a paper on Resilient Distributed Datasets.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Resilient Distributed Datasets</h3>
+
+					<p>The Resilient Distributed Dataset (RDD) forms the core of Apache Spark.  It is:</p>
+
+					<ul>
+						<li>Immutable – you never change an RDD itself; instead, you apply transformation functions to return a new RDD</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Resilient Distributed Datasets</h3>
+
+					<p>The Resilient Distributed Dataset (RDD) forms the core of Apache Spark.  It is:</p>
+
+					<ul>
+						<li>Immutable</li>
+						<li>Distributed – executors (akin to data nodes) split up the data set into sizes small enough to fit into those machines’ memory</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Resilient Distributed Datasets</h3>
+
+					<p>The Resilient Distributed Dataset (RDD) forms the core of Apache Spark.  It is:</p>
+
+					<ul>
+						<li>Immutable</li>
+						<li>Distributed</li>
+						<li>Resilient – in the event that one executor fails, the driver (akin to a name node) recognizes this failure and enlists a new executor to finish the job</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Resilient Distributed Datasets</h3>
+
+					<p>The Resilient Distributed Dataset (RDD) forms the core of Apache Spark.  It is:</p>
+
+					<ul>
+						<li>Immutable</li>
+						<li>Distributed</li>
+						<li>Resilient</li>
+						<li>Lazy – Executors try to minimize the number of data-changing operations</li>
+					</ul>
+					
+					<p>Add all of this together and you have the key component behind Spark.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>The Origins of Spark</li>
+						<li class="active">What is Spark Streaming?</li>
+						<li>Our First Streaming Example</li>
+						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/calendar.jpg" data-background-opacity="0.2">
+					<p>Conceptually, Spark Streaming allows us to work with Resilient Distributed Datasets over time.</p>
+
+					<img src="presentation/assets/image/gsasg-spark-streaming-workflow.png" />
+					
+					<p><a href="https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming">Image Source</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.8">
+					<img src="presentation/assets/image/gsasg-spark-streaming-model.png" />
+					
+					<p><a href="https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming">Image Source</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/cleaning.jpg" data-background-opacity="0.2">
+					<h3>DStreams and Microbatches</h3>
+
+					<p>DStreams are simply time-aware RDDs.  Instead of using backward-looking historical data, we use forward-looking near-present data.</p>
+
+					<p>To maximize performance, Spark tends to wait a certain amount of time and build a microbatch--this reduces the cost of processing overhead by packing more than one record into a DStream.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/frame.jpg" data-background-opacity="0.2">
+					<h3>DataFrames</h3>
+
+					<p>With Apache Spark 2.0, the model shifted from Resilient Distributed Datasets to Datasets and DataFrames.</p>
+
+					<p>Datasets are strongly-typed RDDs.</p>
+
+					<p>DataFrames are Datasets with named columns (<code>Dataset[Row]</code> in Scala).  DataFrames are untyped in Python and R, and in all languages slice data into named columns.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/bison-fighting.jpg" data-background-opacity="0.2">
+					<h3>DataFrames</h3>
+
+					<p>Datasets and DataFrames provide several advantages over RDDs:</p>
+					
+					<ul>
+						<li>Native SQL support</li>
+						<li>Compile-time errors</li>
+						<li>The ability to structure data in code</li>
+						<li>(Sometimes) better performance</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.5">
+					<h3>A Brief Primer on Windows</h3>
+				
+					<p>Spark Streaming has two key types of windows:  tumbling and sliding.  Suppose we have events which happen over time:</p>
+
+					<img src="presentation/assets/image/Events0.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.5">
+					<h3>Tumbling Windows</h3>
+				
+					<p>In a <strong>tumbling window</strong>, we have non-overlapping intervals of events captured during a certain time frame.</p>
+
+					<img src="presentation/assets/image/Events1.gif" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.5">
+					<h3>Sliding Windows</h3>
+				
+					<p>In a <strong>sliding window</strong>, we have potentially-overlapping intervals.  We have a window length (in units of time) and a sliding window interval (in units of time).</p>
+
+					<img src="presentation/assets/image/Events2.gif" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>The Origins of Spark</li>
+						<li>What is Spark Streaming?</li>
+						<li class="active">Our First Streaming Example</li>
+						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Hello World:  DStream</h3>
+				
+					<pre><code data-line-numbers="|1|2|3-5|6-8" data-trim><script type="text/template">
+					val ssc = new StreamingContext("local[*]", "HelloSparkStreaming", Seconds(1))
+					val lines = ssc.socketTextStream("127.0.0.1", 9999, StorageLevel.MEMORY_ONLY)
+					val wordCounts = lines.flatMap(line => line.split(' '))
+						.map(word => word.toLowerCase())
+						.countByValueAndWindow(Seconds(30), Seconds(5))
+					wordCounts
+						.transform(rdd => rdd.sortBy(_._2, false))
+						.print(10)
+					</script></code></pre>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Hello World:  DStream</h3>
+				
+					<pre><code data-line-numbers="|1-4|5-9|10-14|15-19" data-trim><script type="text/template">
+					val spark:SparkSession = SparkSession.builder()
+						.master("local[3]")
+						.appName("HelloSparkStreaming_DataFrame")
+						.getOrCreate()
+					val df = spark.readStream
+						.format("socket")
+						.option("host","127.0.0.1")
+						.option("port","9999")
+						.load()
+					val count = df
+						.select(explode(split(df("value")," "))
+						.alias("word"))
+						.groupBy("word")
+						.count()
+					val query = count.writeStream
+						.format("console")
+						.outputMode("complete")
+						.start()
+						.awaitTermination()
+					</script></code></pre>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>The Origins of Spark</li>
+						<li>What is Spark Streaming?</li>
+						<li>Our First Streaming Example</li>
+						<li class="active">A Full Program</li>
+						<li>.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/cobra.jpg" data-background-opacity="0.2">
+					<h3>Cars:  a Story in Three Services</h3>
+					
+					<p>Our company has automobile data stored in an Apache Kafka topic.  We'd like to migrate that data over to a Cassandra database for analysis.  With Spark Streaming, we can do this easily.</p>
+
+					<img src="presentation/assets/image/CarsDemo.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>The Origins of Spark</li>
+						<li>What is Spark Streaming?</li>
+						<li>Our First Streaming Example</li>
+						<li>A Full Program</li>
+						<li class="active">.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/magnifying-glass.jpg" data-background-opacity="0.2">
+					<h3>Capabilities</h3>
+					
+					<p>Microsoft.Spark allows us to execute code in .NET DLLs or executables against Spark clusters.  Key functionality:</p>
+
+					<ol>
+						<li>Both C# and F# are supported.</li>
+						<li>Use the DataFrames API for Spark Structured Streaming.</li>
+						<li>Import additional libraries using Maven.</li>
+						<li>Debugging is possible from within Visual Studio and Visual Studio Code.</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/robot.jpg" data-background-opacity="0.2">
+					<h3>Limitations</h3>
+
+					<ol>
+						<li>No support for DStreams.</li>
+						<li>Support for Spark versions tends to lag.</li>
+						<li>Error handling can be a pain.</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/stack.jpg" data-background-opacity="0.2">
+					<h3>Approach</h3>
+
+					<ol>
+						<li>Build .NET code in Visual Studio / VS Code.</li>
+						<li>Build a Docker container with .NET Core + Java and install Spark.</li>
+						<li>Run the `spark-submit` command, sending all necessary parameters.</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What's Next</h3>
+					
+					<p>We've only scratched the surface of Spark Streaming.  Additional topics of interest include:</p>
+					
+					<ul>
+						<li>Watermarking and late-arriving data</li>
+						<li>Checkpoints and recovery from failure</li>
+						<li>Window functions in Spark SQL</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Wrapping Up</h3>
+					
+					<p>
+						To learn more, go here:
+						<br />
+						<a href="https://csmore.info/on/sparkstreaming">https://csmore.info/on/sparkstreaming</a>
+					</p>
+					<br />
+					<p>
+						And for help, contact me:
+						<br />
+						<a href="mailto:feasel@catallaxyservices.com">feasel@catallaxyservices.com</a> | <a href="https://www.twitter.com/feaselkl">@feaselkl</a>
+					</p>
+					<br />
+					<p>
+						Catallaxy Services consulting:
+						<br />
+						<a href="https://csmore.info/contact">https://CSmore.info/on/contact</a>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/zoom/zoom.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/search/search.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
+		<script src="../reveal.js/plugin/menu/menu.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/chart/Chart.min.js"></script>
+		<script src="../reveal.js/plugin/chart/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				width: '70%',
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				transition: 'fade',
+				
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath, RevealMenu, RevealChart ]
+			});
+		</script>
+	</body>
+</html>
