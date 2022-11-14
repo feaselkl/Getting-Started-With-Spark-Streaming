@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "NRvRxtCZjcLsDRmX0JTnAOtj29usj0605YA/+bx+vnG38xkMZ6MlPUd5tkhActREJ+rk9sbwY+1ajsTmR13H7A==",
+  "success": true,
+  "projectFilePath": "C:\\SourceCode\\Getting-Started-With-Spark-Streaming\\dotnet\\SparkStreamingDotNetExample\\SparkStreamingDotNetExample\\SparkStreamingDotNetExample.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fease\\.nuget\\packages\\apache.arrow\\0.14.1\\apache.arrow.0.14.1.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\fsharp.core\\5.0.0-beta.20514.8\\fsharp.core.5.0.0-beta.20514.8.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\microsoft.data.analysis\\0.4.0\\microsoft.data.analysis.0.4.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\microsoft.ml.dataview\\1.0.0\\microsoft.ml.dataview.1.0.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\microsoft.spark\\0.12.1\\microsoft.spark.0.12.1.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\razorvine.pyrolite\\4.26.0\\razorvine.pyrolite.4.26.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\razorvine.serpent\\1.29.0\\razorvine.serpent.1.29.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\system.memory\\4.5.2\\system.memory.4.5.2.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+    "C:\\Users\\fease\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
