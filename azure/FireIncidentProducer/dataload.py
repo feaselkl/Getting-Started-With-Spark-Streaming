@@ -6,9 +6,12 @@ import numpy as np
 import pandas as pd
 
 conn_str = os.environ['FIRE_INCIDENTS_EVENT_HUB_CONNECTION_STRING']
+### Small dataset
+df = pd.read_csv('data/Fire_Incidents_Small.csv')
+groups = df.groupby(np.arange(len(df.index))//100)
+### Large dataset
 # df = pd.read_csv('https://cspolybasepublic.blob.core.windows.net/polybaserevealedpublicdata/Fire_Incidents_2022.csv')
-df = pd.read_csv('data/Fire_Incidents_2022.csv')
-groups = df.groupby(np.arange(len(df.index))//10)
+# groups = df.groupby(np.arange(len(df.index))//100)
 
 async def run():
     # Create a producer client to send messages to the event hub.

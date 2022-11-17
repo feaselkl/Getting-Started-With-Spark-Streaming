@@ -38,7 +38,7 @@
 									<td nowrap><a href="https://curatedsql.com">Curated SQL</a></td>
 								</tr>
 								<tr>
-									<td><a href="https://link.springer.com/book/10.1007/978-1-4842-8870-2"><img src="../WebsiteAssets/Finding-Ghosts.jpg" height="120" /></a></td>
+									<td><a href="https://link.springer.com/book/10.1007/978-1-4842-8870-2"><img src="../WebsiteAssets/FindingGhosts.png" height="120" /></a></td>
 									<td nowrap><a href="https://link.springer.com/book/10.1007/978-1-4842-8870-2">Finding Ghosts in Your Data</a></td>
 								</tr>
 							</table>
@@ -59,6 +59,7 @@
 						<li>What is Spark Streaming?</li>
 						<li>Our First Streaming Example</li>
 						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
 					</ol>
 				</section>
 				
@@ -128,19 +129,20 @@
 						<li class="active">What is Spark Streaming?</li>
 						<li>Our First Streaming Example</li>
 						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
 					</ol>
 				</section>
 				
 				<section data-background-image="presentation/assets/background/calendar.jpg" data-background-opacity="0.2">
 					<p>Conceptually, Spark Streaming allows us to work with Resilient Distributed Datasets over time.</p>
 
-					<img src="presentation/assets/image/gsasg-spark-streaming-workflow.png" height="425" />
+					<img src="presentation/assets/image/gsasg-spark-streaming-workflow.png" />
 					
 					<p><a href="https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming">Image Source</a></p>
 				</section>
 				
 				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.8">
-					<img src="presentation/assets/image/gsasg-spark-streaming-model.png" height="550" />
+					<img src="presentation/assets/image/gsasg-spark-streaming-model.png" />
 					
 					<p><a href="https://docs.microsoft.com/en-us/azure/databricks/getting-started/spark/streaming">Image Source</a></p>
 				</section>
@@ -181,7 +183,7 @@
 				
 					<p>Spark Streaming has two key types of windows:  tumbling and sliding.  Suppose we have events which happen over time:</p>
 
-					<img src="presentation/assets/image/Events0.png" height="100" />
+					<img src="presentation/assets/image/Events0.png" />
 				</section>
 				
 				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.5">
@@ -189,7 +191,7 @@
 				
 					<p>In a <strong>tumbling window</strong>, we have non-overlapping intervals of events captured during a certain time frame.</p>
 
-					<img src="presentation/assets/image/Events1.gif" height="100" />
+					<img src="presentation/assets/image/Events1.gif" />
 				</section>
 				
 				<section data-background-image="presentation/assets/background/graywall.jpg" data-background-opacity="0.5">
@@ -197,7 +199,7 @@
 				
 					<p>In a <strong>sliding window</strong>, we have potentially-overlapping intervals.  We have a window length (in units of time) and a sliding window interval (in units of time).</p>
 
-					<img src="presentation/assets/image/Events2.gif" height="100" />
+					<img src="presentation/assets/image/Events2.gif" />
 				</section>
 				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -208,19 +210,16 @@
 						<li>What is Spark Streaming?</li>
 						<li class="active">Our First Streaming Example</li>
 						<li>A Full Program</li>
+						<li>.NET and Spark Streaming</li>
 					</ol>
 				</section>
 				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Hello World:  DStream</h3>
 				
-					<pre><code data-line-numbers="|1-3|4-6|7-9|10-12" data-trim><script type="text/template">
-					val ssc = new StreamingContext("local[*]",
-								       "HelloSparkStreaming",
-								       Seconds(1))
-					val lines = ssc.socketTextStream("127.0.0.1",
-									 9999,
-									 StorageLevel.MEMORY_ONLY)
+					<pre><code data-line-numbers="|1|2|3-5|6-8" data-trim><script type="text/template">
+					val ssc = new StreamingContext("local[*]", "HelloSparkStreaming", Seconds(1))
+					val lines = ssc.socketTextStream("127.0.0.1", 9999, StorageLevel.MEMORY_ONLY)
 					val wordCounts = lines.flatMap(line => line.split(' '))
 						.map(word => word.toLowerCase())
 						.countByValueAndWindow(Seconds(30), Seconds(5))
@@ -255,7 +254,11 @@
 						.awaitTermination()
 					</script></code></pre>
 				</section>
-
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Agenda</h3>
 					
@@ -268,58 +271,61 @@
 					</ol>
 				</section>
 				
-				<section data-background-image="presentation/assets/background/fire-engine.jpg" data-background-opacity="0.2">
-					<h3>Calling the Fire Department</h3>
+				<section data-background-image="presentation/assets/background/cobra.jpg" data-background-opacity="0.2">
+					<h3>Cars:  a Story in Three Services</h3>
 					
-					<p>Our dataset includes data from Wake County, North Carolina fire incidents.  Fire incidents occur for a variety of reasons, including fires, fire drills, medical emergencies, and even getting cats out of trees or assisting the elderly.</p>
-				</section>
-				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Streaming Incidents</h3>
-					
-					<p>We have a collection of fire incidents and we will send these from a local service into Spark Structured Streaming.  The easiest way to do this with Azure Databricks is to ingest the data via an Azure Event Hub.</p>
+					<p>Our company has automobile data stored in an Apache Kafka topic.  We'd like to migrate that data over to a Cassandra database for analysis.  With Spark Streaming, we can do this easily.</p>
 
-					<img src="presentation/assets/image/AzureArchitecture.png" />
+					<img src="presentation/assets/image/CarsDemo.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
 				</section>
 				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Prep Work -- Event Hubs</h3>
+					<h3>Agenda</h3>
 					
-					<p>We need to create an Event Hub namespace in Azure, as well as an event hub into which we will send data.</p>
+					<ol>
+						<li>The Origins of Spark</li>
+						<li>What is Spark Streaming?</li>
+						<li>Our First Streaming Example</li>
+						<li>A Full Program</li>
+						<li class="active">.NET and Spark Streaming</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/magnifying-glass.jpg" data-background-opacity="0.2">
+					<h3>Capabilities</h3>
+					
+					<p>Microsoft.Spark allows us to execute code in .NET DLLs or executables against Spark clusters.  Key functionality:</p>
 
-					<img src="presentation/assets/image/EventHub.png" height="350" />
+					<ol>
+						<li>Both C# and F# are supported.</li>
+						<li>Use the DataFrames API for Spark Structured Streaming.</li>
+						<li>Import additional libraries using Maven.</li>
+						<li>Debugging is possible from within Visual Studio and Visual Studio Code.</li>
+					</ol>
 				</section>
 				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Prep Work -- Event Hubs SAS Policy</h3>
-					
-					<p>We need to create an Event Hub shared access policy for Databricks.  This only needs Listen because we're just consuming the data, not producing new records.</p>
+				<section data-background-image="presentation/assets/background/robot.jpg" data-background-opacity="0.2">
+					<h3>Limitations</h3>
 
-					<img src="presentation/assets/image/SASPolicy.png" height="350" />
+					<ol>
+						<li>No support for DStreams.</li>
+						<li>Support for Spark versions tends to lag.</li>
+						<li>Error handling can be a pain.</li>
+					</ol>
 				</section>
 				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Prep Work -- Key Vault</h3>
-					
-					<p>Azure Databricks can store secrets internally or use Azure Key Vault.  Because Key Vault is the norm for Azure secrets management, we'll store our secrets there.</p>
+				<section data-background-image="presentation/assets/background/stack.jpg" data-background-opacity="0.2">
+					<h3>Approach</h3>
 
-					<img src="presentation/assets/image/KeyVault.png" height="350" />
-				</section>
-				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Prep Work -- Databricks</h3>
-					
-					<p>In Databricks, we need to create a new secrets scope in order to access Key Vault.  The URL for this is <code>https://[databricks_url]#secrets/createScope</code>.</p>
-
-					<img src="presentation/assets/image/SecretsScope.png" height="400" />
-				</section>
-				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Prep Work -- Maven</h3>
-					
-					<p>We will also need the Azure Event Hubs for Spark library, which is available in Maven.</p>
-					
-					<img src="presentation/assets/image/MavenLibrary.png" height="425" />
+					<ol>
+						<li>Build .NET code in Visual Studio / VS Code.</li>
+						<li>Build a Docker container with .NET Core + Java and install Spark.</li>
+						<li>Run the `spark-submit` command, sending all necessary parameters.</li>
+					</ol>
 				</section>
 				
 				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
